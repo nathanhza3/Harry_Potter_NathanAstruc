@@ -1,4 +1,4 @@
-package com.isep.hpah.core;
+package com.isep.model;
 
 public enum Core {
     AFRICAN_MERMAID_HAIR,
@@ -24,6 +24,5 @@ public enum Core {
     UNICORN_HAIR,
     VEELA_HAIR,
     WAMPUS_CAT_HAIR,
-    WAND_CORE,
     WHITE_RIVER_MONSTER_SPINE
 }
