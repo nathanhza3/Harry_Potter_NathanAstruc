@@ -12,7 +12,7 @@ public class Wand {
         int index = random.nextInt(Core.values().length);
         this.core = Core.values()[index].toString();
 
-        int size = random.nextInt(9)+7;
+        int size = random.nextInt(7,15);
         this.size = size;
 
     }

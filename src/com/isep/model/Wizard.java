@@ -1,4 +1,6 @@
 package com.isep.model;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Wizard extends Character {
@@ -7,8 +9,8 @@ public class Wizard extends Character {
     private Wand wand;
     private House house;
     private Pet pet;
-    private Potion potions;
-    private AbstractSpell knownSpells;
+    private List<Potion> potions;
+    private List<AbstractSpell> knownSpells;
     private int maxHp;
     private int hp;
     private int xp;
@@ -16,7 +18,7 @@ public class Wizard extends Character {
     private int spellPower;
     private int maxSpellPower;
 
-    public Wizard(String name, int maxHp, int spellPower) {
+    public Wizard(String name, int maxHp, int spellPower, Wand wand) {
         this.wand = wand;
         this.name = name;
         this.maxHp = maxHp;
@@ -25,7 +27,9 @@ public class Wizard extends Character {
         this.level = 1;
         this.spellPower = spellPower;
         this.maxSpellPower = spellPower;
-        }
+        this.knownSpells = new ArrayList<>();
+
+    }
 
         public String getName() {
             return name;

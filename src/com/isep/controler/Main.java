@@ -17,6 +17,7 @@ public class Main {
         House house = sortingHat.assignHouse();
         display.printText(String.format("The Sorting Hat has assigned you to %s's house ! ", house ));
     }
+
     public void Pet(){
         Petshop petShop = new Petshop();
         Pet pet = petShop.getPet();
