@@ -15,6 +15,7 @@ public class Wizard extends Character {
     private int hp;
     private int xp;
     private int level;
+    private int mana;
     private int spellPower;
     private int maxSpellPower;
 
@@ -25,6 +26,7 @@ public class Wizard extends Character {
         this.hp = maxHp;
         this.xp = 0;
         this.level = 1;
+        this.mana=100;
         this.spellPower = spellPower;
         this.maxSpellPower = spellPower;
         this.knownSpells = new ArrayList<>();
@@ -50,6 +52,7 @@ public class Wizard extends Character {
         public int getLevel() {
             return level;
         }
+        public int getMana(){return mana; }
 
         public int getSpellPower() {
             return spellPower;

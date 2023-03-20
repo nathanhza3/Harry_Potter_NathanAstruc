@@ -32,8 +32,8 @@ public class Main {
 
     public static void main(String[] args) {
         Main main= new Main (System.in);
-        main.Pet();
         main.House();
+        main.Pet();
         main.Wand();
         }
     }

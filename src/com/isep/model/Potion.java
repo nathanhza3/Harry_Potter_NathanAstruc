@@ -4,7 +4,7 @@ public class Potion {
     private int healAmount;
 
     public Potion(int healAmount) {
-        this.healAmount = healAmount;
+        this.healAmount = 50;
     }
 
     public int getHealAmount() {

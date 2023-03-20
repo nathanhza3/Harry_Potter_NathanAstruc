@@ -5,5 +5,7 @@ public enum Pet {
     DOG,
     HOWL,
 
-    RAT;
+    RAT,
+
+    DOBBY;
 }
