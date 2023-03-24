@@ -12,10 +12,16 @@ public class Main {
         display = new ConsoleDisplay();
     }
 
-    public void House(){
+    /*public void House(){
         SortingHat sortingHat = new SortingHat();
         House house = sortingHat.assignHouse();
         display.printText(String.format("The Sorting Hat has assigned you to %s's house ! ", house ));
+    }*/
+    public void House(Wizard wizard) {
+        String name = wizard.getName();
+        String house = wizard.getHouse();
+        display.printText(String.format("%s is in %s's house!", name , house));
+
     }
 
     public void Pet(){
@@ -32,6 +38,7 @@ public class Main {
 
     public static void main(String[] args) {
         Main main= new Main (System.in);
+
         main.House();
         main.Pet();
         main.Wand();

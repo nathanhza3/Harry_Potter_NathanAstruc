@@ -14,7 +14,10 @@ public class ForbiddenSpell extends AbstractSpell {
         return new Spell("Curcio ", 50, 50,70);
     }
 
-    public abstract void cast(Ennemy caster,Wizard target);
+
+    public  void cast(Wizard caster,  Ennemy target){
+
+    }
 
 
 

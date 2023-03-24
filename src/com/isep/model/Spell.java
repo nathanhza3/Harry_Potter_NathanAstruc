@@ -35,12 +35,12 @@ public class Spell extends AbstractSpell{
     public void cast(Wizard caster, Ennemy target) {
 
         if (caster.getMana() >= getManaCost()) {
-            caster.reduceMana(getManaCost());
-            target.reduceHealth(getDamage());
+            caster.reduceMana(getManaCost());   //encore à faire la methode qui reduit le mana
+            target.reduceHealth(getDamage()); //faire la méthode qui reduit la santé de la cible
         }
     }
 
 
-    public abstract void cast(Wizard caster,  Ennemy target);
+
 
 }
