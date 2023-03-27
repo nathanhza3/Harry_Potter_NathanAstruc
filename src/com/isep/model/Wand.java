@@ -1,26 +1,20 @@
 package com.isep.model;
 
-import java.util.Random;
-
 public class Wand {
     private int size;
-    private String core;
+    private Core core;
 
-    public Wand() {
-        Random random = new Random();
+    public Wand(Core core, int size) {
 
-        int index = random.nextInt(Core.values().length);
-        this.core = Core.values()[index].toString();
-
-        int size = random.nextInt(7,15);
-        this.size = size;
+        this.core = core;
+        this.size =  size;
 
     }
 
     public int getSize() {
         return size;
     }
-    public String getCore() {
+    public Core getCore() {
         return core;
     }
 }

@@ -14,20 +14,18 @@ public class Wizard extends Character {
     private int hp;
     private int xp;
     private int level;
-    private int mana;
-    private int spellPower;
-    private int maxSpellPower;
 
-    public Wizard(String name, int maxHp, int spellPower, Wand wand, House house, int mana) {
+    public Wizard(String name, int maxHp, Wand wand, House house) {
         this.wand = wand;
         this.name = name;
         this.maxHp = maxHp;
         this.hp = maxHp;
         this.xp = 0;
         this.level = 1;
-        this.mana=mana;
-        this.spellPower = spellPower;
-        this.maxSpellPower = spellPower;
+        this.house = house;
+
+        //this.spellPower = spellPower;
+        //this.maxSpellPower = spellPower;
         this.knownSpells = new ArrayList<>();
 
     }
@@ -36,7 +34,7 @@ public class Wizard extends Character {
             return name;
         }
 
-    public String getHouse(){ return house; }
+    public House getHouse(){ return house; }
 
     public int getMaxHp() {
             return maxHp;
@@ -51,23 +49,14 @@ public class Wizard extends Character {
     public int getLevel() {
         return level;
     }
-    public int getMana(){return mana; }
-
-    public int getSpellPower() {
-        return spellPower;
-    }
-
-    public int getMaxSpellPower() {
-        return maxSpellPower;
-    }
 
     public void castSpell(Wizard enemyWizard) {
         Random random = new Random();
-        int damage = random.nextInt(spellPower) + 1;
+        int damage = random.nextInt(-5,5); //+le sort
         enemyWizard.takeDamage(damage);
-        spellPower -= damage;
-        if (spellPower < 0) {
-            spellPower = 0;
+
+        if (damage < 0) {
+            damage = 0;
         }
     }
     public void setHp(int hp) {
@@ -84,11 +73,6 @@ public class Wizard extends Character {
             hp = 0;
         }
     }
-    public void reduceMana(int manaCost) {
-        mana -= manaCost;
-        if (mana < 0) {
-            mana = 0;
-        }}
 
     public boolean isDead() {
         return hp == 0;
@@ -104,5 +88,10 @@ public class Wizard extends Character {
         maxHp += 10;
         hp = maxHp;
         System.out.println(name + " is now level " + level + "!");
+    }
+
+    public String toString(){
+
+        return "Hi " + getName() + ", the Sorting Hat has assigned you to "+ house.toString() +"'s house. We have also chosen the best wand for you, it is " + wand.getSize() + " inches and has a core of " + wand.getCore();
     }
 }

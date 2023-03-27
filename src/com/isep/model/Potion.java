@@ -3,10 +3,10 @@ package com.isep.model;
 public class Potion {
     private int healAmount;
 
-    public Potion(Wizard wizard) {
+    public Potion(Wizard wizard, House house) {
         int maxHp = wizard.getMaxHp();
         int HealAmount = maxHp ;
-        if (wizard.getHouse() == House.Hufflepuff) {
+        if (House.HUFFLEPUFF == wizard.getHouse()) {
             this.healAmount = HealAmount/2 ;  //50% de soin
         } else {
             this.healAmount = HealAmount/3;  //33% de soin
