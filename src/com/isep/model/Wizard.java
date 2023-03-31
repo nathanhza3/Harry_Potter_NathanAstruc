@@ -31,12 +31,28 @@ public class Wizard extends Character {
         this.house = house;
         this.pointsToAllocate = 0;
         this.potions = new ArrayList<>();
-        this.potions.add(new Potion(1));
+        this.potions.add(new Potion(50));
 
         //this.spellPower = spellPower;
         //this.maxSpellPower = spellPower;
         this.knownSpells = new ArrayList<>();
 
+    }
+
+    public List<Potion> getPotions() {
+        return potions;
+    }
+
+    public void setPotions(List<Potion> potions) {
+        this.potions = potions;
+    }
+
+    public List<AbstractSpell> getKnownSpells() {
+        return knownSpells;
+    }
+
+    public void setKnownSpells(List<AbstractSpell> knownSpells) {
+        this.knownSpells = knownSpells;
     }
 
     public String getName() {
@@ -63,16 +79,6 @@ public class Wizard extends Character {
     public void setPointsToAllocate(int pointsToAllocate) {
         this.pointsToAllocate = pointsToAllocate;
     }
-
-    public void castSpell(Wizard enemyWizard) {
-        Random random = new Random();
-        int damage = random.nextInt(-5,5); //+le sort
-        enemyWizard.takeDamage(damage);
-
-        if (damage < 0) {
-            damage = 0;
-        }
-    }
     public void setHp(int hp) {
             this.hp = hp;
         }
@@ -81,9 +87,9 @@ public class Wizard extends Character {
     }
     public void attackWithSpell( Ennemy ennemy, Spell spell) {
         Random random = new Random();
-        int chance = random.nextInt(101); // aleatoire pour accuracy
-        if (chance <= spell.getAccuracy()) { // Si le pourcentage de réussite est atteint ou dépassé
-            ennemy.reduceHealth(spell.getDamage()); // Réduire les points de vie de l'ennemi
+        int chance = random.nextInt(101); // aléatoire pour accuracy
+        if (chance <= spell.getAccuracy()) {
+            ennemy.reduceHealth(spell.getDamage());
             ConsoleDisplay.printText(String.format("%s a lancé le sort %s avec succès sur %s, infligeant %d points de dégâts !",
                     this.getName(), spell.getName(), ennemy.getName(), spell.getDamage()));
         } else { // Sinon, le sort échoue
@@ -92,9 +98,9 @@ public class Wizard extends Character {
         }
     }
     public void takeDamage(int damage) {
-        hp -= damage;
-        if (hp < 0) {
-            hp = 0;
+        this.hp -= damage;
+        if (this.hp < 0) {
+            this.hp = 0;
         }
     }
     public boolean isDead() {
@@ -141,6 +147,8 @@ public class Wizard extends Character {
 
     public String toString(){
 
-        return "Hi " + getName() + ", the Sorting Hat has assigned you to "+ house.toString() +"'s house. We have also chosen the best wand for you, it is " + wand.getSize() + " inches and has a core of " + wand.getCore();
+        return "Hi " + getName() + ", Welcome to Hogwarts <3" +
+                "\nThe Sorting Hat has assigned you to "+ house.toString() +"'s house." +
+                "\nWe have also chosen the best wand for you, it is " + wand.getSize() + " inches and has a core of " + wand.getCore();
     }
 }

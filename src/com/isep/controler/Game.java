@@ -4,6 +4,7 @@ import com.isep.model.*;
 import com.isep.view.ConsoleDisplay;
 import com.isep.view.ConsoleScanner;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
@@ -33,7 +34,11 @@ public class Game {
 
 
         Ennemy ennemy = new Ennemy(100,30,"Troll");
-        ConsoleDisplay.printText(ennemy.getName()+"   " +ennemy.getDamage()+"   " +ennemy.getHp());
+        ConsoleDisplay.printText(ennemy.getName()+"   " +ennemy.getDamage()+"   "+ennemy.getHp());
+
+
+
+
 
 
 
