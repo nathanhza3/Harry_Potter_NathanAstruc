@@ -1,20 +1,31 @@
 package com.isep.model;
 
 public abstract class AbstractEnemy extends Character{
-    private int health;
-
-    public AbstractEnemy(int health) {
-        this.health = health;
+    private int Hp;
+    private int damage;
+    private String name;
+    public AbstractEnemy(int Hp,int damage,String name) {
+        this.Hp = Hp;
+        this.damage = damage;
+        this.name = name;
     }
 
-    public int getHealth() {
-        return health;
+    public int getHp() {
+        return Hp;
     }
+    public int getDamage(){
+        return damage;
+    }
+
+    public String getName() {
+        return name;
+    }
+
 
     public void reduceHealth(int damage) {
-        health -= damage;
-        if (health < 0) {
-            health = 0;
+        Hp -= damage;
+        if (Hp < 0) {
+            Hp = 0;
         }
     }
 }

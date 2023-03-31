@@ -27,9 +27,15 @@ public class Game {
         int n =randomGenrator.nextInt(House.values().length);
         House house = House.values()[n];
 
-        Wizard wizard = new Wizard(name, 100, wand, house);
+        Wizard wizard = new Wizard(name, 100, 0, wand, house);
 
         display.printText(wizard.toString());
+
+
+        Ennemy ennemy = new Ennemy(100,30,"Troll");
+        ConsoleDisplay.printText(ennemy.getName()+"   " +ennemy.getDamage()+"   " +ennemy.getHp());
+
+
 
 
 
