@@ -124,7 +124,7 @@ public class Wizard extends Character {
         }
         if (chance <= spell.getAccuracy()) {
             if (this.getHouse() == House.SLYTHERIN){
-                damage =  spell.getDamage() + 7;
+                damage =  spell.getDamage() + 9 + this.damage;
 
             }
             else{
@@ -171,7 +171,7 @@ public class Wizard extends Character {
                     System.out.println("maxHp and hp increased by 10.");
                     break;
                 case 2:
-                    damage += 5;
+                    this.damage += 5;
                     pointsToAllocate--;
                     System.out.println("Bonus Damage increased by 5.");
                     break;

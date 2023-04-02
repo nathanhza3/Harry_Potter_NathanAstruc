@@ -218,11 +218,9 @@ public class Game {
     public static void startGame() {
         Game game = new Game();
         game.initWizard();
-        /*game.Level1();
+        game.Level1();
         game.Level2();
         game.Level3();
-
-         */
         game.Level4();
         game.Level5();
         game.Level6();
