@@ -4,12 +4,11 @@ public class Spell extends AbstractSpell{
     public Spell(String name, int damage,  int accuracy) {
         super(name, damage, accuracy);
     }
+    /*
     public Spell Wingardium_leviosa() {
         return new Spell("Wingardium Leviosa", 0,80);
     }
-    public Spell Expectro_Patronum() {
-        return new Spell("Expectro Patronum", 0,90);
-    }
+
     public Spell Accio() {
         return new Spell("Accio", 5, 80);
     }
@@ -26,7 +25,7 @@ public class Spell extends AbstractSpell{
     public Spell Doloris() {
         return new Spell("Doloris", 70, 80);
     }
-
+*/
 
 
 

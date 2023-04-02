@@ -9,10 +9,11 @@ import java.util.Scanner;
 public class Wizard extends Character {
     private String name;
     private Wand wand;
+    private Core core;
     private House house;
     private Pet pet;
     private List<Potion> potions;
-    private List<AbstractSpell> knownSpells;
+    public List<AbstractSpell> knownSpells;
     private int maxHp;
     private int hp;
     private int xp;
@@ -20,8 +21,9 @@ public class Wizard extends Character {
     private int damage;
     private int pointsToAllocate;
 
-    public Wizard(String name, int maxHp,  int damage, Wand wand, House house) {
+    public Wizard(String name, int maxHp, Wand wand, House house) {
         this.wand = wand;
+        this.core = core;
         this.name = name;
         this.maxHp = maxHp;
         this.damage = damage;
@@ -31,12 +33,24 @@ public class Wizard extends Character {
         this.house = house;
         this.pointsToAllocate = 0;
         this.potions = new ArrayList<>();
-        this.potions.add(new Potion(50));
 
-        //this.spellPower = spellPower;
-        //this.maxSpellPower = spellPower;
+        //this.potions.add(new Potion());
+
+
+
         this.knownSpells = new ArrayList<>();
+        this.knownSpells.add(new Spell("Wingardium Leviosa", 20,70));
 
+
+
+    }
+
+    public boolean addPotion(Potion potion){
+        return this.potions.add(potion);
+    }
+
+    public boolean removePotion(Potion potion){
+        return this.potions.remove(potion);
     }
 
     public List<Potion> getPotions() {
@@ -51,8 +65,13 @@ public class Wizard extends Character {
         return knownSpells;
     }
 
+
     public void setKnownSpells(List<AbstractSpell> knownSpells) {
         this.knownSpells = knownSpells;
+    }
+
+    public void setPet(Pet pet) {
+        this.pet = pet;
     }
 
     public String getName() {
@@ -60,6 +79,14 @@ public class Wizard extends Character {
         }
 
     public House getHouse(){ return house; }
+
+    public Core getCore() {
+        return core;
+    }
+
+    public void setCore(Core core) {
+        this.core = core;
+    }
 
     public int getMaxHp() {
             return maxHp;
@@ -87,13 +114,28 @@ public class Wizard extends Character {
     }
     public void attackWithSpell( Ennemy ennemy, Spell spell) {
         Random random = new Random();
-        int chance = random.nextInt(101); // aléatoire pour accuracy
+        int damage = 0;
+        int chance = 0;
+        if (this.getHouse() == House.RAVENCLAW){
+            chance = random.nextInt(101) -25; // aléatoire pour accuracy
+        }
+        else {
+            chance = random.nextInt(101);
+        }
         if (chance <= spell.getAccuracy()) {
-            ennemy.reduceHealth(spell.getDamage());
-            ConsoleDisplay.printText(String.format("%s a lancé le sort %s avec succès sur %s, infligeant %d points de dégâts !",
-                    this.getName(), spell.getName(), ennemy.getName(), spell.getDamage()));
+            if (this.getHouse() == House.SLYTHERIN){
+                damage =  spell.getDamage() + 7;
+
+            }
+            else{
+                damage= spell.getDamage();
+            }
+            ennemy.reduceHealth(damage);
+            ConsoleDisplay.printText(String.format("%s successfully cast the %s spell on %s, inflicting %s damage!",
+                    this.getName(), spell.getName(), ennemy.getName(), damage));
+            ConsoleDisplay.printText(String.format("the %s has %sHP left",ennemy.getName(),ennemy.getHp()));
         } else { // Sinon, le sort échoue
-            ConsoleDisplay.printText(String.format("%s a tenté de lancer le sort %s sur %s, mais il a échoué !",
+            ConsoleDisplay.printText(String.format("%s attempted to cast the spell %s on %s, but it failed !",
                     this.getName(), spell.getName(), ennemy.getName()));
         }
     }
@@ -115,12 +157,12 @@ public class Wizard extends Character {
             levelUp();
         }
     }
-    private void levelUp() {
+    public void levelUp() {
         level++;
         pointsToAllocate++;
         Scanner scanner = new Scanner(System.in);
         while (pointsToAllocate > 0) {
-            System.out.println("You have " + pointsToAllocate + " points to allocate. Enter 1 to allocate to maxHp, 2 to allocate to damage: ");
+            System.out.println("You have " + pointsToAllocate + " points to allocate. Enter 1 to allocate to maxHp, 2 to allocate to Bonus damage: ");
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
@@ -131,7 +173,7 @@ public class Wizard extends Character {
                 case 2:
                     damage += 5;
                     pointsToAllocate--;
-                    System.out.println("Damage increased by 5.");
+                    System.out.println("Bonus Damage increased by 5.");
                     break;
                 default:
                     System.out.println("Invalid choice.");
@@ -139,10 +181,7 @@ public class Wizard extends Character {
             }
         }
         hp = maxHp;
-        System.out.println("Level up! You have recovered all your life points. Max HP is now " + maxHp + ", damage is now " + damage + ".");
-
-
-
+        System.out.println("Level up! You have recovered all your life points. Max HP is now " + maxHp + ", Bonus damage is now " + damage + ".");
     }
 
     public String toString(){
